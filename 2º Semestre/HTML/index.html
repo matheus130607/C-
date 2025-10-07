@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de LEDs com Arduino via Web</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Controle de LEDs com Arduino via Web</h1>
+
+        <div class="ledverde">
+            <h2>LED 1 (Verde)</h2>
+            <button style="background-color: green;" onclick="ligar()">Ligar</button>
+            <button  style="background-color: red;" onclick="desligar()">Desligar</button>
+        </div>
+
+        <div class="ledvermelho">
+            <h2>LED 2 (Vermelho)</h2>
+            <button style="background-color: green;" onclick="ligar2()">Ligar</button>
+            <button style="background-color: red;" onclick="desligar2()">Desligar</button>
+        </div>
+    </div>
+
+    <style>
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.ledverde, .ledvermelho {
+    display: inline-block;
+    background-color: #d3d1d1;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #444;
+    margin-bottom: 10px;
+}
+
+button {
+    border: none;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 4px;
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+    </style>
+
+</body>
+</html>
