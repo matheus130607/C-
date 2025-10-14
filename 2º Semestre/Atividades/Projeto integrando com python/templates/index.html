@@ -12,17 +12,31 @@
 
         <div class="ledverde">
             <h2>LED 1 (Verde)</h2>
-            <button style="background-color: green;" onclick="ligar()">Ligar</button>
-            <button  style="background-color: red;" onclick="desligar()">Desligar</button>
+            <button class="on" style="background-color: green;" onclick="controlled('1', 'on')">Ligar</button>
+            <button class="off"  style="background-color: red;" onclick="controlled('1', 'off')">Desligar</button>
         </div>
 
         <div class="ledvermelho">
             <h2>LED 2 (Vermelho)</h2>
-            <button style="background-color: green;" onclick="ligar2()">Ligar</button>
-            <button style="background-color: red;" onclick="desligar2()">Desligar</button>
+            <button class="on" style="background-color: green;" onclick="controlled('2', 'on')">Ligar</button>
+            <button class="off" style="background-color: red;" onclick="controlled('2', 'off')">Desligar</button>
         </div>
     </div>
 
+    <script>
+        function controlled(ledNum, action) {
+            // A função fetch envia uma reputação para o nosso  servidor Python
+            fetch(`/control/${ledNum}/${action}`)
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); //Mostra a resposta do servidor no console do navegador
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+        }
+    </script>
+    
     <style>
  body {
     font-family: Arial, sans-serif;
