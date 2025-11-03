@@ -55,7 +55,7 @@ void loop() {
 
     
     // Controle de LEDs
-    if (temperatura <= 26) {
+    if (temperatura < 27) {
       digitalWrite(led1pin, HIGH);
       digitalWrite(led2pin, LOW);
       digitalWrite(led3pin, LOW);

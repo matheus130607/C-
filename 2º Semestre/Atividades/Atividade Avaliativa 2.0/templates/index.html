@@ -4,17 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Controle IoT</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
-        .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
-        .bloco { margin-bottom: 20px; }
-        .bloco h2 { border-bottom: 2px solid #eee; padding-bottom: 5px; }
-        .bloco p { font-size: 1.2em; }
-        button { font-size: 1em; padding: 10px 15px; margin: 5px; cursor: pointer; border-radius: 5px; border: none; color: white; }
-        .on { background-color: #28a745; }
-        .off { background-color: #dc3545; }
-        #temp, #umid { font-weight: bold; color: #007bff; }
-    </style>
+    
 </head>
 <body>
     <div class="container">
@@ -27,7 +17,6 @@
     </div>
 
     <script>
-
         // Função para buscar os dados do sensor
         function buscarDadosSensor() {
             fetch('/get_data') // Chama a nova rota no app.py
@@ -49,5 +38,150 @@
         // Busca os dados assim que a página carregar
         document.addEventListener('DOMContentLoaded', buscarDadosSensor);
     </script>
+
+
+<style>
+    /* 1. Estilos Base e Fundo Animado */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* Fundo Gradiente Animado (Tipo "Neblina" Suave) */
+        background: linear-gradient(-45deg, #1e3c72, #2a5298, #2a947a, #33b8a1);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        color: #f0f0f0; /* Cor do texto principal clara */
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    /* 2. Container Principal (Card Animado) */
+    .container {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.95); /* Fundo quase branco */
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        color: #333;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Animação Inicial: Suave entrada e pulso */
+        animation: fadeIn 1s ease-out, pulseShadow 4s infinite alternate;
+    }
+
+    /* Efeito de Levantamento ao passar o mouse */
+    .container:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(0, 123, 255, 0.6); /* Sombra mais intensa e azul */
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulseShadow {
+        0% { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
+        100% { box-shadow: 0 15px 30px rgba(0, 123, 255, 0.4); } 
+    }
+
+    /* 3. Estilos de Título e Blocos */
+    h1 {
+        color: #007bff;
+        margin-bottom: 25px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .bloco {
+        margin-bottom: 25px;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #f8f9fa; 
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        overflow: hidden; /* Importante para a animação da borda */
+        position: relative;
+    }
+    
+    /* Efeito de Borda Animada no Bloco (apenas visual) */
+    .bloco::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #007bff;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+    }
+
+    .bloco:hover::before {
+        transform: translateX(0); /* A borda azul desliza ao passar o mouse */
+    }
+
+    .bloco:hover {
+        background-color: #e9ecef;
+        transform: scale(1.01);
+    }
+
+    .bloco h2 {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 8px;
+        margin-top: 5px;
+        color: #007bff;
+        transition: color 0.3s ease;
+    }
+
+    .bloco p {
+        font-size: 1.3em;
+        margin: 10px 0;
+    }
+
+    /* 4. Animação de Dados (Simulação de Atualização) */
+    #temp, #umid {
+        font-weight: bold;
+        color: #dc3545; /* Cor vermelha para destaque */
+        display: inline-block;
+        /* Simula um 'refresh' visual suave a cada 3 segundos */
+        animation: dataPulse 3s infinite; 
+    }
+    
+    /* Animação de pulso para simular que os dados estão sendo atualizados dinamicamente */
+    @keyframes dataPulse {
+        0% { transform: scale(1); opacity: 1; }
+        10% { transform: scale(1.05); opacity: 0.8; color: #ffc107; } /* Amarelo no pico */
+        20% { transform: scale(1); opacity: 1; color: #dc3545; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* 5. Estilos de Botões (Embora não estejam no HTML, mantemos os estilos animados) */
+    button { 
+        /* ... outros estilos de botão ... */
+        transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .on { background-color: #28a745; }
+    .off { background-color: #dc3545; }
+
+</style>
 </body>
 </html>
